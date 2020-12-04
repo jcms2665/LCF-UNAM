@@ -2,7 +2,7 @@
 # Creacion:          03-12-2020
 # Autor:             Julio C.
 # Contacto:          jcms2665@gmail.com
-# Objetivo:          An醠isis Discriminante
+# Objetivo:          An谩lisis Discriminante
 # Datos:             Alumnos.csv
 # Github:            
 #--------------------------------------------------------------------------
@@ -12,8 +12,8 @@
 #     0. Entorno de trabajo
 #     1. Cargar base
 #     2. Aplicar el modelo
-#     3. Nueva observaci髇
-#     4. Predicci髇
+#     3. Nueva observaci贸n
+#     4. Predicci贸n
 #--------------------------------------------------------------------------
 
 
@@ -26,7 +26,7 @@ library(foreign)
 library(ggplot2)
 library(MASS)
 
-setwd("D:/OneDrive - El Colegio de M閤ico A.C/5. Proyectos/2020/18. LCF/2 Noviembre/Github/04122020-LDA")
+setwd("D:/OneDrive - El Colegio de M茅xico A.C/5. Proyectos/2020/18. LCF/2 Noviembre/Github/04122020-LDA")
 Alumnos<-read.csv("Alumnos.csv")
 View(Alumnos)
 
@@ -37,7 +37,7 @@ Alumnos$aprobado<-factor(Alumnos$aprobado, levels = c(0,1), labels = c("Reprueba
 dis=lda(aprobado~hrs_estudio+hrs_fiesta+hrs_camino_escuela+calificacion_mate, data=Alumnos,prior=c(0.5,0.5))
 dis
 
-#3. Nueva observaci髇
+#3. Nueva observaci贸n
 #   Supongamos que entra un alumno nuevo. Y que:
 #     hrs_estudio =4.3
 #     hrs_fiesta  =1.5
@@ -49,23 +49,10 @@ nuevo.alumno=rbind(c(4.3,1.5,1.3,8.0))
 colnames(nuevo.alumno)=colnames(Alumnos[,2:5])
 nuevo.alumno=data.frame(nuevo.alumno)
 
-#4. Predicci髇
+#4. Predicci贸n
 predict(dis,newdata =nuevo.alumno)
 
 
-
-
-
-
-
-
-# Ejercicio
-
-#Llega otro nuevo alumno con los siguientes datos:
-#     hrs_estudio =1.3
-#     hrs_fiesta  =0.5
-#     hrs_camino  =0.3
-#     calif_mate  =7.0
 
 
 
